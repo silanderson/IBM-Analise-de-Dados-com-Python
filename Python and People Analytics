@@ -1,112 +1,91 @@
-# Bootcamp de Engenharia de Dados
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Python and People Analytics</title>
+    <meta charset="UTF-8">
+    <meta name="Python" content="Python em People Analytics">
+    <link rel="stylesheet" href="estilos.css">
+  </head>
+  <body>
+    <h1>Python and People Analytics</h1>
+    <p>Nos dias de hoje, o uso da tecnologia tem sido cada vez mais importante para a gestão de pessoas dentro das empresas. Uma das áreas que mais se beneficiam com o uso da tecnologia é o people analytics, que consiste em analisar dados dos colaboradores e utilizar essas informações para tomar decisões mais estratégicas. Já o Workforce Management é uma abordagem que tem como objetivo maximizar a produtividade dos colaboradores. Neste artigo, iremos explorar como o Python pode ser utilizado tanto em people analytics quanto no Workforce Management.</p>
 
-## Setup AWS
-
-1. Crie uma conta na AWS (Conta root);
-2. Crie uma conta com permissão de `administrador` para ser a conta usada para projeto;
-3. Crie um servidor PostgreSQL **na versão 13** usando o Amazon RDS;
-4. Clique no Security Groupo e libere o acesso a porta 5432 vindo do seu ip público;
-
-
-## Setup Ingestion to RDS
-
-1. Edite o arquivo `.env` com as informções do Amazon RDS;
-2. Instale todas as bibliotecas necessárias para rodar a aplicação de ingestão com o comando:
-```
-pip install -r requirements.txt
-```
-3. Execute a aplicação `app-ingestion-sql`
-4. Conecte no banco de dados usando algum cliente de banco de dados, por exemplo o *dbeaver* e verifique se as tabelas foram criadas.
-
-## Setup Ingestion to Data Lake
-1. Edite o arquivo .env informando as credencias de chave de acesso, por exemplo:
-
-```console
-AWS_ACCESS_KEY_ID=AKIA4WFGE4SB25sdfadf
-AWS_SECRET_ACCESS_KEY=mwXXs8NjLwI83fnxrZ7rm4zsQHEftY3adfafd
-```
-2. Crie um bucket na aws, no meu caso criei *raw-bootcampde-872226808963*
-3. Edit o arquivo .env informando o nome do bucket criado na variável BUCKET_NAME
-4. Execute a aplicação `app-mobile-customers.py`
-5. Verifique se os arquivos .json estão sendo inseridos no bucket.
-
-**Importante**:
-- Interrompa o banco de dados RDS.
-
-
-Nos dias de hoje, o uso da tecnologia tem sido cada vez mais importante para a gestão de pessoas dentro das empresas. Uma das áreas que mais se beneficiam com o uso da tecnologia é o people analytics, que consiste em analisar dados dos colaboradores e utilizar essas informações para tomar decisões mais estratégicas. Já o Workforce Management é uma abordagem que tem como objetivo maximizar a produtividade dos colaboradores. Neste artigo, iremos explorar como o Python pode ser utilizado tanto em people analytics quanto no Workforce Management.
-
-O Python tem uma grande variedade de bibliotecas e recursos que podem ser usados em people analytics e Workforce Management. A biblioteca Pandas é um exemplo de biblioteca popular que oferece muitas ferramentas para análise de dados. Abaixo, vamos ver cinco exemplos de código Python que podem ser usados em ambas as áreas:
-
-1 - Importando a biblioteca Pandas e lendo um arquivo csv com dados dos colaboradores:
-
-import pandas as pd
-dados_colaboradores = pd.read_csv("dados_colaboradores.csv")
-
-2 - Calculando a taxa de rotatividade da empresa:
-
-python
-Copy code
-taxa_rotatividade = (dados_colaboradores['desligamentos'] / dados_colaboradores['colaboradores']) * 100
-print("A taxa de rotatividade da empresa é: ", taxa_rotatividade)
-
-3 - Criando um gráfico de pizza para visualizar a distribuição de gênero entre os colaboradores:
-python
-Copy code
-import matplotlib.pyplot as plt
-
-generos = dados_colaboradores['genero'].value_counts()
-plt.pie(generos, labels=generos.index, autopct='%1.1f%%')
-plt.title('Distribuição de gênero entre os colaboradores')
-plt.show()
-
-4- Calculando o número de horas extras trabalhadas pelos colaboradores:
-python
-Copy code
-horas_extras = dados_colaboradores['horas_extras'].sum()
-print("O número total de horas extras trabalhadas é: ", horas_extras)
-
-5 - Criando um gráfico de linhas para visualizar a evolução da produtividade dos colaboradores ao longo do tempo:
-python
-Copy code
-produtividade = dados_colaboradores['produtividade']
-plt.plot(produtividade)
-plt.xlabel('Tempo')
-plt.ylabel('Produtividade')
-plt.title('Evolução da produtividade dos colaboradores')
-plt.show()
-Esses exemplos de código são apenas alguns dos muitos que podem ser usados em Python para people analytics e Workforce Management. Utilizando ferramentas de análise de dados, as empresas podem extrair insights valiosos e tomar decisões mais estratégicas, aumentando a eficiência e a produtividade.
-
-# O uso do Python em People Analytics e Workforce Management
-
-O People Analytics e o Workforce Management têm se tornado cada vez mais importantes nas empresas, especialmente à medida que a competição por talentos se intensifica e as empresas buscam maneiras de melhorar a produtividade e a satisfação dos funcionários. Para lidar com grandes quantidades de dados e realizar análises complexas, muitas organizações estão recorrendo ao Python como uma ferramenta poderosa e flexível.
-
-## 1. Análise de sentimentos de feedback dos funcionários
-
-Uma das aplicações mais comuns do Python em People Analytics é a análise de sentimentos dos feedbacks dos funcionários. O objetivo é avaliar a satisfação dos funcionários com a empresa, identificar áreas problemáticas e encontrar maneiras de melhorar. Com o uso de bibliotecas como o NLTK e o TextBlob, é possível analisar grandes volumes de feedbacks de funcionários e extrair insights valiosos.
-
-<h1 id="o-uso-do-python-em-people-analytics-e-workforce-management">O
-uso do Python em People Analytics e Workforce Management</h1>
-<p>O People Analytics e o Workforce Management têm se tornado cada vez
-mais importantes nas empresas, especialmente à medida que a competição
-por talentos se intensifica e as empresas buscam maneiras de melhorar a
-produtividade e a satisfação dos funcionários. Para lidar com grandes
-quantidades de dados e realizar análises complexas, muitas organizações
-estão recorrendo ao Python como uma ferramenta poderosa e flexível.</p>
-<h2 id="análise-de-sentimentos-de-feedback-dos-funcionários">1. Análise
-de sentimentos de feedback dos funcionários</h2>
-<p>Uma das aplicações mais comuns do Python em People Analytics é a
-análise de sentimentos dos feedbacks dos funcionários. O objetivo é
-avaliar a satisfação dos funcionários com a empresa, identificar áreas
-problemáticas e encontrar maneiras de melhorar. Com o uso de bibliotecas
-como o NLTK e o TextBlob, é possível analisar grandes volumes de
-feedbacks de funcionários e extrair insights valiosos.</p>
-<p>```python from textblob import TextBlob</p>
-<p>feedback = “A empresa tem ótimos benefícios, mas poderia melhorar a
-comunicação interna.”</p>
-<p>blob = TextBlob(feedback)</p>
-<p>if blob.sentiment.polarity &gt; 0: print(“Feedback positivo”) else:
-print(“Feedback negativo”)</p>
-
-
-Em conclusão, o Python é uma ferramenta muito poderosa para pessoas que trabalham com people analytics e Workforce Management. Com as bibliotecas Pandas, Matplotlib e outras ferramentas disponíveis, as empresas podem analisar e gerenciar grandes quantidades de dados com eficiência e tomar decisões mais informadas sobre seus colaboradores. Portanto, se sua empresa ainda não está usando o Python em seus programas de people analytics e Workforce Management, é hora de começar a explorar essas ferramentas.
+        <p>O Python tem uma grande variedade de bibliotecas e recursos que podem ser usados em people analytics e Workforce Management. A biblioteca Pandas é um exemplo de biblioteca popular que oferece muitas ferramentas para análise de dados. Abaixo, vamos ver cinco exemplos de código Python que podem ser usados em ambas as áreas:</p>
+        
+        <h2>1 - Importando a biblioteca Pandas e lendo um arquivo csv com dados dos colaboradores:</h2>
+        
+        <P>import pandas as pd</P>
+        <P>dados_colaboradores = pd.read_csv("dados_colaboradores.csv")</P>
+        
+        2 - Calculando a taxa de rotatividade da empresa:
+        
+        python
+        Copy code
+        taxa_rotatividade = (dados_colaboradores['desligamentos'] / dados_colaboradores['colaboradores']) * 100
+        print("A taxa de rotatividade da empresa é: ", taxa_rotatividade)
+        
+        3 - Criando um gráfico de pizza para visualizar a distribuição de gênero entre os colaboradores:
+        python
+        Copy code
+        import matplotlib.pyplot as plt
+        
+        generos = dados_colaboradores['genero'].value_counts()
+        plt.pie(generos, labels=generos.index, autopct='%1.1f%%')
+        plt.title('Distribuição de gênero entre os colaboradores')
+        plt.show()
+        
+        4- Calculando o número de horas extras trabalhadas pelos colaboradores:
+        python
+        Copy code
+        horas_extras = dados_colaboradores['horas_extras'].sum()
+        print("O número total de horas extras trabalhadas é: ", horas_extras)
+        
+        5 - Criando um gráfico de linhas para visualizar a evolução da produtividade dos colaboradores ao longo do tempo:
+        python
+        Copy code
+        produtividade = dados_colaboradores['produtividade']
+        plt.plot(produtividade)
+        plt.xlabel('Tempo')
+        plt.ylabel('Produtividade')
+        plt.title('Evolução da produtividade dos colaboradores')
+        plt.show()
+        Esses exemplos de código são apenas alguns dos muitos que podem ser usados em Python para people analytics e Workforce Management. Utilizando ferramentas de análise de dados, as empresas podem extrair insights valiosos e tomar decisões mais estratégicas, aumentando a eficiência e a produtividade.
+        
+        # O uso do Python em People Analytics e Workforce Management
+        
+        O People Analytics e o Workforce Management têm se tornado cada vez mais importantes nas empresas, especialmente à medida que a competição por talentos se intensifica e as empresas buscam maneiras de melhorar a produtividade e a satisfação dos funcionários. Para lidar com grandes quantidades de dados e realizar análises complexas, muitas organizações estão recorrendo ao Python como uma ferramenta poderosa e flexível.
+        
+        ## 1. Análise de sentimentos de feedback dos funcionários
+        
+        Uma das aplicações mais comuns do Python em People Analytics é a análise de sentimentos dos feedbacks dos funcionários. O objetivo é avaliar a satisfação dos funcionários com a empresa, identificar áreas problemáticas e encontrar maneiras de melhorar. Com o uso de bibliotecas como o NLTK e o TextBlob, é possível analisar grandes volumes de feedbacks de funcionários e extrair insights valiosos.
+        
+        <h1 id="o-uso-do-python-em-people-analytics-e-workforce-management">O
+        uso do Python em People Analytics e Workforce Management</h1>
+        <p>O People Analytics e o Workforce Management têm se tornado cada vez
+        mais importantes nas empresas, especialmente à medida que a competição
+        por talentos se intensifica e as empresas buscam maneiras de melhorar a
+        produtividade e a satisfação dos funcionários. Para lidar com grandes
+        quantidades de dados e realizar análises complexas, muitas organizações
+        estão recorrendo ao Python como uma ferramenta poderosa e flexível.</p>
+        <h2 id="análise-de-sentimentos-de-feedback-dos-funcionários">1. Análise
+        de sentimentos de feedback dos funcionários</h2>
+        <p>Uma das aplicações mais comuns do Python em People Analytics é a
+        análise de sentimentos dos feedbacks dos funcionários. O objetivo é
+        avaliar a satisfação dos funcionários com a empresa, identificar áreas
+        problemáticas e encontrar maneiras de melhorar. Com o uso de bibliotecas
+        como o NLTK e o TextBlob, é possível analisar grandes volumes de
+        feedbacks de funcionários e extrair insights valiosos.</p>
+        <p>```python from textblob import TextBlob</p>
+        <p>feedback = “A empresa tem ótimos benefícios, mas poderia melhorar a
+        comunicação interna.”</p>
+        <p>blob = TextBlob(feedback)</p>
+        <p>if blob.sentiment.polarity &gt; 0: print(“Feedback positivo”) else:
+        print(“Feedback negativo”)</p>
+        
+        
+        Em conclusão, o Python é uma ferramenta muito poderosa para pessoas que trabalham com people analytics e Workforce Management. Com as bibliotecas Pandas, Matplotlib e outras ferramentas disponíveis, as empresas podem analisar e gerenciar grandes quantidades de dados com eficiência e tomar decisões mais informadas sobre seus colaboradores. Portanto, se sua empresa ainda não está usando o Python em seus programas de people analytics e Workforce Management, é hora de começar a explorar essas ferramentas.
+        
+    <img src="imagem.jpg" alt="Descrição da Imagem">
+    <a href="https://www.google.com">Link para o Google</a>
+  </body>
+</html>
